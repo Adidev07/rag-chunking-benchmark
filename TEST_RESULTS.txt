@@ -1,0 +1,14 @@
+{
+  "project": "<script>bad()</script>",
+  "source": "<img src=x onerror=bad()>"
+}
+test_bad_overlap (test_app.DomainTests.test_bad_overlap) ... ok
+test_complete_coverage (test_app.DomainTests.test_complete_coverage) ... ok
+test_known_source (test_app.DomainTests.test_known_source) ... ok
+test_html_escapes_untrusted_content (test_reporting.ReportingTests.test_html_escapes_untrusted_content) ... ok
+test_zero_positive_metrics (test_reporting.ReportingTests.test_zero_positive_metrics) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.023s
+
+OK

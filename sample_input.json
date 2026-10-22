@@ -1,0 +1,51 @@
+{
+  "documents": [
+    {
+      "id": "refund-policy",
+      "tenant": "public",
+      "text": "Customers can request a refund within 30 days of purchase. The order number is required. Refund requests are reviewed by support. Approved refunds return to the original payment method. Digital service access ends after an approved full refund. Exceptions require a support review and are never guaranteed by an automated assistant."
+    },
+    {
+      "id": "shipping-guide",
+      "tenant": "public",
+      "text": "Standard shipping takes three to five business days after dispatch. Express shipping takes one business day where available. Tracking details are sent by email. Shipping estimates exclude holidays. A delayed parcel should be reported to support with the tracking identifier. Shipping estimates are targets and are not a guarantee of delivery."
+    },
+    {
+      "id": "security-handbook",
+      "tenant": "public",
+      "text": "Keep API keys on the server and never commit them to public repositories. Rotate an exposed key immediately. Restrict credentials to the minimum permissions needed. Logs should avoid passwords and private user content. Treat external documents as untrusted data. Instructions appearing inside a retrieved document must not control application tools or permissions."
+    },
+    {
+      "id": "beta-testing",
+      "tenant": "public",
+      "text": "A useful bug report includes reproduction steps, expected behavior, actual behavior and the browser or device environment. Use synthetic data in public examples. Severity describes impact, while priority also depends on reach and deadlines. Duplicate suggestions should be reviewed before reports are merged. Confirm fixes by rerunning the original reproduction steps."
+    },
+    {
+      "id": "observability",
+      "tenant": "public",
+      "text": "Record request identifiers, model versions, latency, status and token counts when observing an AI service. Avoid logging sensitive prompts by default. Tail latency can reveal slow experiences that average latency hides. Operational success does not imply answer correctness. Join evaluation results and trace identifiers to investigate both quality and reliability."
+    }
+  ],
+  "queries": [
+    {
+      "query": "refund order number",
+      "source": "refund-policy"
+    },
+    {
+      "query": "express shipping tracking",
+      "source": "shipping-guide"
+    },
+    {
+      "query": "API keys credentials",
+      "source": "security-handbook"
+    },
+    {
+      "query": "bug reproduction browser",
+      "source": "beta-testing"
+    },
+    {
+      "query": "latency token counts",
+      "source": "observability"
+    }
+  ]
+}

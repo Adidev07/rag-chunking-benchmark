@@ -1,0 +1,5 @@
+Python 3.12.14
+NumPy 2.3.5
+Default command: python app.py
+Domain and reporting tests passed.
+Live model integration: not tested.

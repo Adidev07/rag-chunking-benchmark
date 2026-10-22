@@ -1,0 +1,694 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RAG Chunking and Retrieval Benchmark</title><style>body{font:16px system-ui;max-width:1100px;margin:40px auto;padding:20px;background:#101c2f;color:#e8f2ff}h1{color:#8ee7d1}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#182c46;padding:24px;border-radius:12px;line-height:1.5}.cards{display:flex;flex-wrap:wrap;gap:15px}.card{padding:20px;background:#213953;border-radius:10px;min-width:160px}b{display:block;font-size:26px;margin-top:10px}</style><h1>RAG Chunking and Retrieval Benchmark</h1><p>Reproducible educational experiment. See README and model card for scope and limitations.</p><div class="cards"></div><h2>Complete results</h2><pre>{
+  &quot;project&quot;: &quot;RAG Chunking and Retrieval Benchmark&quot;,
+  &quot;configurations&quot;: [
+    {
+      &quot;size&quot;: 12,
+      &quot;overlap&quot;: 0,
+      &quot;chunks&quot;: 25,
+      &quot;recall_at_3&quot;: 1.0,
+      &quot;mrr&quot;: 1.0,
+      &quot;mean_context_words&quot;: 31.8,
+      &quot;queries&quot;: [
+        {
+          &quot;query&quot;: &quot;refund order number&quot;,
+          &quot;expected&quot;: &quot;refund-policy&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;refund-policy:0&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;Customers can request a refund within 30 days of purchase. The order&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 4.500567029453425
+            },
+            {
+              &quot;id&quot;: &quot;refund-policy:12&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;number is required. Refund requests are reviewed by support. Approved refunds return&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 4.500567029453425
+            },
+            {
+              &quot;id&quot;: &quot;refund-policy:36&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;full refund. Exceptions require a support review and are never guaranteed by&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 1.8578022169996697
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;express shipping tracking&quot;,
+          &quot;expected&quot;: &quot;shipping-guide&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;shipping-guide:0&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;Standard shipping takes three to five business days after dispatch. Express shipping&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.353752540640151
+            },
+            {
+              &quot;id&quot;: &quot;shipping-guide:36&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;with the tracking identifier. Shipping estimates are targets and are not a&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 4.027322582367766
+            },
+            {
+              &quot;id&quot;: &quot;shipping-guide:12&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;takes one business day where available. Tracking details are sent by email.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 2.169520365368096
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;API keys credentials&quot;,
+          &quot;expected&quot;: &quot;security-handbook&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;security-handbook:0&quot;,
+              &quot;source&quot;: &quot;security-handbook&quot;,
+              &quot;text&quot;: &quot;Keep API keys on the server and never commit them to public&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.28552962490751
+            },
+            {
+              &quot;id&quot;: &quot;security-handbook:12&quot;,
+              &quot;source&quot;: &quot;security-handbook&quot;,
+              &quot;text&quot;: &quot;repositories. Rotate an exposed key immediately. Restrict credentials to the minimum permissions&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 2.642764812453755
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;bug reproduction browser&quot;,
+          &quot;expected&quot;: &quot;beta-testing&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;beta-testing:0&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;A useful bug report includes reproduction steps, expected behavior, actual behavior and&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 4.812285177821851
+            },
+            {
+              &quot;id&quot;: &quot;beta-testing:48&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;original reproduction steps.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 3.431956784871083
+            },
+            {
+              &quot;id&quot;: &quot;beta-testing:12&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;the browser or device environment. Use synthetic data in public examples. Severity&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 2.642764812453755
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;latency token counts&quot;,
+          &quot;expected&quot;: &quot;observability&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;observability:0&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;Record request identifiers, model versions, latency, status and token counts when observing&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 7.14333184190718
+            },
+            {
+              &quot;id&quot;: &quot;observability:12&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;an AI service. Avoid logging sensitive prompts by default. Tail latency can&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 1.8578022169996697
+            },
+            {
+              &quot;id&quot;: &quot;observability:24&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;reveal slow experiences that average latency hides. Operational success does not imply&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 1.8578022169996697
+            }
+          ]
+        }
+      ]
+    },
+    {
+      &quot;size&quot;: 12,
+      &quot;overlap&quot;: 3,
+      &quot;chunks&quot;: 30,
+      &quot;recall_at_3&quot;: 1.0,
+      &quot;mrr&quot;: 1.0,
+      &quot;mean_context_words&quot;: 34.8,
+      &quot;queries&quot;: [
+        {
+          &quot;query&quot;: &quot;refund order number&quot;,
+          &quot;expected&quot;: &quot;refund-policy&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;refund-policy:9&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;purchase. The order number is required. Refund requests are reviewed by support.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 7.182306737438017
+            },
+            {
+              &quot;id&quot;: &quot;refund-policy:0&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;Customers can request a refund within 30 days of purchase. The order&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 4.2728095269448465
+            },
+            {
+              &quot;id&quot;: &quot;refund-policy:27&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;payment method. Digital service access ends after an approved full refund. Exceptions&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 1.8540618239997897
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;express shipping tracking&quot;,
+          &quot;expected&quot;: &quot;shipping-guide&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;shipping-guide:9&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;dispatch. Express shipping takes one business day where available. Tracking details are&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 6.126871350944636
+            },
+            {
+              &quot;id&quot;: &quot;shipping-guide:0&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;Standard shipping takes three to five business days after dispatch. Express shipping&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.097486868219201
+            },
+            {
+              &quot;id&quot;: &quot;shipping-guide:18&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;Tracking details are sent by email. Shipping estimates exclude holidays. A delayed&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 3.7081236479995794
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;API keys credentials&quot;,
+          &quot;expected&quot;: &quot;security-handbook&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;security-handbook:0&quot;,
+              &quot;source&quot;: &quot;security-handbook&quot;,
+              &quot;text&quot;: &quot;Keep API keys on the server and never commit them to public&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.818994420986341
+            },
+            {
+              &quot;id&quot;: &quot;security-handbook:18&quot;,
+              &quot;source&quot;: &quot;security-handbook&quot;,
+              &quot;text&quot;: &quot;Restrict credentials to the minimum permissions needed. Logs should avoid passwords and&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 2.4187477029450566
+            },
+            {
+              &quot;id&quot;: &quot;security-handbook:9&quot;,
+              &quot;source&quot;: &quot;security-handbook&quot;,
+              &quot;text&quot;: &quot;them to public repositories. Rotate an exposed key immediately. Restrict credentials to&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 2.4187477029450566
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;bug reproduction browser&quot;,
+          &quot;expected&quot;: &quot;beta-testing&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;beta-testing:0&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;A useful bug report includes reproduction steps, expected behavior, actual behavior and&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.328244913438227
+            },
+            {
+              &quot;id&quot;: &quot;beta-testing:45&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;by rerunning the original reproduction steps.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 3.1651041369966744
+            },
+            {
+              &quot;id&quot;: &quot;beta-testing:9&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;actual behavior and the browser or device environment. Use synthetic data in&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 2.9094972104931704
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;latency token counts&quot;,
+          &quot;expected&quot;: &quot;observability&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;observability:0&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;Record request identifiers, model versions, latency, status and token counts when observing&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 7.423744179454607
+            },
+            {
+              &quot;id&quot;: &quot;observability:18&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;prompts by default. Tail latency can reveal slow experiences that average latency&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 3.0275667628880196
+            },
+            {
+              &quot;id&quot;: &quot;observability:9&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;counts when observing an AI service. Avoid logging sensitive prompts by default.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 2.4187477029450566
+            }
+          ]
+        }
+      ]
+    },
+    {
+      &quot;size&quot;: 24,
+      &quot;overlap&quot;: 0,
+      &quot;chunks&quot;: 15,
+      &quot;recall_at_3&quot;: 1.0,
+      &quot;mrr&quot;: 1.0,
+      &quot;mean_context_words&quot;: 39.0,
+      &quot;queries&quot;: [
+        {
+          &quot;query&quot;: &quot;refund order number&quot;,
+          &quot;expected&quot;: &quot;refund-policy&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;refund-policy:0&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;Customers can request a refund within 30 days of purchase. The order number is required. Refund requests are reviewed by support. Approved refunds return&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 6.336051268230923
+            },
+            {
+              &quot;id&quot;: &quot;refund-policy:24&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;to the original payment method. Digital service access ends after an approved full refund. Exceptions require a support review and are never guaranteed by&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 1.5661074856682702
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;express shipping tracking&quot;,
+          &quot;expected&quot;: &quot;shipping-guide&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;shipping-guide:0&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;Standard shipping takes three to five business days after dispatch. Express shipping takes one business day where available. Tracking details are sent by email.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.905081759346464
+            },
+            {
+              &quot;id&quot;: &quot;shipping-guide:24&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;Shipping estimates exclude holidays. A delayed parcel should be reported to support with the tracking identifier. Shipping estimates are targets and are not a&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 3.9080047647937355
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;API keys credentials&quot;,
+          &quot;expected&quot;: &quot;security-handbook&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;security-handbook:0&quot;,
+              &quot;source&quot;: &quot;security-handbook&quot;,
+              &quot;text&quot;: &quot;Keep API keys on the server and never commit them to public repositories. Rotate an exposed key immediately. Restrict credentials to the minimum permissions&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.991230983658188
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;bug reproduction browser&quot;,
+          &quot;expected&quot;: &quot;beta-testing&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;beta-testing:0&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;A useful bug report includes reproduction steps, expected behavior, actual behavior and the browser or device environment. Use synthetic data in public examples. Severity&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.5602614747737285
+            },
+            {
+              &quot;id&quot;: &quot;beta-testing:48&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;original reproduction steps.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 2.9492584893659486
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;latency token counts&quot;,
+          &quot;expected&quot;: &quot;observability&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;observability:0&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;Record request identifiers, model versions, latency, status and token counts when observing an AI service. Avoid logging sensitive prompts by default. Tail latency can&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 6.336051268230923
+            },
+            {
+              &quot;id&quot;: &quot;observability:24&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;reveal slow experiences that average latency hides. Operational success does not imply answer correctness. Join evaluation results and trace identifiers to investigate both quality&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 1.5661074856682702
+            }
+          ]
+        }
+      ]
+    },
+    {
+      &quot;size&quot;: 24,
+      &quot;overlap&quot;: 6,
+      &quot;chunks&quot;: 15,
+      &quot;recall_at_3&quot;: 1.0,
+      &quot;mrr&quot;: 1.0,
+      &quot;mean_context_words&quot;: 52.2,
+      &quot;queries&quot;: [
+        {
+          &quot;query&quot;: &quot;refund order number&quot;,
+          &quot;expected&quot;: &quot;refund-policy&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;refund-policy:0&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;Customers can request a refund within 30 days of purchase. The order number is required. Refund requests are reviewed by support. Approved refunds return&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 6.524145552377534
+            },
+            {
+              &quot;id&quot;: &quot;refund-policy:36&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;full refund. Exceptions require a support review and are never guaranteed by an automated assistant.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 1.7440623403624411
+            },
+            {
+              &quot;id&quot;: &quot;refund-policy:18&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;reviewed by support. Approved refunds return to the original payment method. Digital service access ends after an approved full refund. Exceptions require a support&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 1.428024198149113
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;express shipping tracking&quot;,
+          &quot;expected&quot;: &quot;shipping-guide&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;shipping-guide:0&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;Standard shipping takes three to five business days after dispatch. Express shipping takes one business day where available. Tracking details are sent by email.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.728026757382845
+            },
+            {
+              &quot;id&quot;: &quot;shipping-guide:18&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;Tracking details are sent by email. Shipping estimates exclude holidays. A delayed parcel should be reported to support with the tracking identifier. Shipping estimates&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 4.151719132179861
+            },
+            {
+              &quot;id&quot;: &quot;shipping-guide:36&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;with the tracking identifier. Shipping estimates are targets and are not a guarantee of delivery.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 3.4881246807248822
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;API keys credentials&quot;,
+          &quot;expected&quot;: &quot;security-handbook&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;security-handbook:0&quot;,
+              &quot;source&quot;: &quot;security-handbook&quot;,
+              &quot;text&quot;: &quot;Keep API keys on the server and never commit them to public repositories. Rotate an exposed key immediately. Restrict credentials to the minimum permissions&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 6.192458594684836
+            },
+            {
+              &quot;id&quot;: &quot;security-handbook:18&quot;,
+              &quot;source&quot;: &quot;security-handbook&quot;,
+              &quot;text&quot;: &quot;Restrict credentials to the minimum permissions needed. Logs should avoid passwords and private user content. Treat external documents as untrusted data. Instructions appearing inside&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 1.7441726083972329
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;bug reproduction browser&quot;,
+          &quot;expected&quot;: &quot;beta-testing&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;beta-testing:0&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;A useful bug report includes reproduction steps, expected behavior, actual behavior and the browser or device environment. Use synthetic data in public examples. Severity&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 6.192458594684836
+            },
+            {
+              &quot;id&quot;: &quot;beta-testing:36&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;should be reviewed before reports are merged. Confirm fixes by rerunning the original reproduction steps.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 2.130178021731046
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;latency token counts&quot;,
+          &quot;expected&quot;: &quot;observability&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;observability:0&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;Record request identifiers, model versions, latency, status and token counts when observing an AI service. Avoid logging sensitive prompts by default. Tail latency can&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 6.983717387762605
+            },
+            {
+              &quot;id&quot;: &quot;observability:18&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;prompts by default. Tail latency can reveal slow experiences that average latency hides. Operational success does not imply answer correctness. Join evaluation results and&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 2.5354314014750017
+            }
+          ]
+        }
+      ]
+    },
+    {
+      &quot;size&quot;: 48,
+      &quot;overlap&quot;: 0,
+      &quot;chunks&quot;: 10,
+      &quot;recall_at_3&quot;: 1.0,
+      &quot;mrr&quot;: 1.0,
+      &quot;mean_context_words&quot;: 48.6,
+      &quot;queries&quot;: [
+        {
+          &quot;query&quot;: &quot;refund order number&quot;,
+          &quot;expected&quot;: &quot;refund-policy&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;refund-policy:0&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;Customers can request a refund within 30 days of purchase. The order number is required. Refund requests are reviewed by support. Approved refunds return to the original payment method. Digital service access ends after an approved full refund. Exceptions require a support review and are never guaranteed by&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.5729084513448655
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;express shipping tracking&quot;,
+          &quot;expected&quot;: &quot;shipping-guide&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;shipping-guide:0&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;Standard shipping takes three to five business days after dispatch. Express shipping takes one business day where available. Tracking details are sent by email. Shipping estimates exclude holidays. A delayed parcel should be reported to support with the tracking identifier. Shipping estimates are targets and are not a&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 6.712343703637574
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;API keys credentials&quot;,
+          &quot;expected&quot;: &quot;security-handbook&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;security-handbook:0&quot;,
+              &quot;source&quot;: &quot;security-handbook&quot;,
+              &quot;text&quot;: &quot;Keep API keys on the server and never commit them to public repositories. Rotate an exposed key immediately. Restrict credentials to the minimum permissions needed. Logs should avoid passwords and private user content. Treat external documents as untrusted data. Instructions appearing inside a retrieved document must not control&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 4.278481616808442
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;bug reproduction browser&quot;,
+          &quot;expected&quot;: &quot;beta-testing&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;beta-testing:0&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;A useful bug report includes reproduction steps, expected behavior, actual behavior and the browser or device environment. Use synthetic data in public examples. Severity describes impact, while priority also depends on reach and deadlines. Duplicate suggestions should be reviewed before reports are merged. Confirm fixes by rerunning the&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 3.9128380124285753
+            },
+            {
+              &quot;id&quot;: &quot;beta-testing:48&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;original reproduction steps.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 2.457295336166992
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;latency token counts&quot;,
+          &quot;expected&quot;: &quot;observability&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;observability:0&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;Record request identifiers, model versions, latency, status and token counts when observing an AI service. Avoid logging sensitive prompts by default. Tail latency can reveal slow experiences that average latency hides. Operational success does not imply answer correctness. Join evaluation results and trace identifiers to investigate both quality&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.5729084513448655
+            }
+          ]
+        }
+      ]
+    },
+    {
+      &quot;size&quot;: 48,
+      &quot;overlap&quot;: 12,
+      &quot;chunks&quot;: 10,
+      &quot;recall_at_3&quot;: 1.0,
+      &quot;mrr&quot;: 1.0,
+      &quot;mean_context_words&quot;: 57.0,
+      &quot;queries&quot;: [
+        {
+          &quot;query&quot;: &quot;refund order number&quot;,
+          &quot;expected&quot;: &quot;refund-policy&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;refund-policy:0&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;Customers can request a refund within 30 days of purchase. The order number is required. Refund requests are reviewed by support. Approved refunds return to the original payment method. Digital service access ends after an approved full refund. Exceptions require a support review and are never guaranteed by&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.408159681286522
+            },
+            {
+              &quot;id&quot;: &quot;refund-policy:36&quot;,
+              &quot;source&quot;: &quot;refund-policy&quot;,
+              &quot;text&quot;: &quot;full refund. Exceptions require a support review and are never guaranteed by an automated assistant.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 1.938547997470936
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;express shipping tracking&quot;,
+          &quot;expected&quot;: &quot;shipping-guide&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;shipping-guide:0&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;Standard shipping takes three to five business days after dispatch. Express shipping takes one business day where available. Tracking details are sent by email. Shipping estimates exclude holidays. A delayed parcel should be reported to support with the tracking identifier. Shipping estimates are targets and are not a&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 5.857073659483241
+            },
+            {
+              &quot;id&quot;: &quot;shipping-guide:36&quot;,
+              &quot;source&quot;: &quot;shipping-guide&quot;,
+              &quot;text&quot;: &quot;with the tracking identifier. Shipping estimates are targets and are not a guarantee of delivery.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 3.877095994941872
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;API keys credentials&quot;,
+          &quot;expected&quot;: &quot;security-handbook&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;security-handbook:0&quot;,
+              &quot;source&quot;: &quot;security-handbook&quot;,
+              &quot;text&quot;: &quot;Keep API keys on the server and never commit them to public repositories. Rotate an exposed key immediately. Restrict credentials to the minimum permissions needed. Logs should avoid passwords and private user content. Treat external documents as untrusted data. Instructions appearing inside a retrieved document must not control&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 4.837113694623621
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;bug reproduction browser&quot;,
+          &quot;expected&quot;: &quot;beta-testing&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;beta-testing:0&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;A useful bug report includes reproduction steps, expected behavior, actual behavior and the browser or device environment. Use synthetic data in public examples. Severity describes impact, while priority also depends on reach and deadlines. Duplicate suggestions should be reviewed before reports are merged. Confirm fixes by rerunning the&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 4.423728796778311
+            },
+            {
+              &quot;id&quot;: &quot;beta-testing:36&quot;,
+              &quot;source&quot;: &quot;beta-testing&quot;,
+              &quot;text&quot;: &quot;should be reviewed before reports are merged. Confirm fixes by rerunning the original reproduction steps.&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 1.938547997470936
+            }
+          ]
+        },
+        {
+          &quot;query&quot;: &quot;latency token counts&quot;,
+          &quot;expected&quot;: &quot;observability&quot;,
+          &quot;hits&quot;: [
+            {
+              &quot;id&quot;: &quot;observability:0&quot;,
+              &quot;source&quot;: &quot;observability&quot;,
+              &quot;text&quot;: &quot;Record request identifiers, model versions, latency, status and token counts when observing an AI service. Avoid logging sensitive prompts by default. Tail latency can reveal slow experiences that average latency hides. Operational success does not imply answer correctness. Join evaluation results and trace identifiers to investigate both quality&quot;,
+              &quot;tenant&quot;: &quot;public&quot;,
+              &quot;score&quot;: 6.160955337362718
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  &quot;selection_note&quot;: &quot;Development comparison only; no held-out final test or generated answer claims.&quot;
+}</pre></html>

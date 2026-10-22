@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+results/checkpoint.json
+results/checkpoint.tmp
